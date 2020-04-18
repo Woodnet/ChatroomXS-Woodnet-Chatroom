@@ -6,8 +6,8 @@ def accept_incoming_connections():
     """Sets up handling for incoming clients."""
     while True:
         client, client_address = SERVER.accept()
-        print("%s:%s has connected." % client_address)
-        client.send(bytes("Greetings from the cave! Now type your name and press enter!", "utf8"))
+        print("%s:%s hat sich verbunden." % client_address)
+        client.send(bytes("Willkommen beim Woodnet Chatroom! Gebe bitte deinen gewuenschten Namen ein und druecke Enter", "utf8"))
         addresses[client] = client_address
         Thread(target=handle_client, args=(client,)).start()
 
@@ -16,9 +16,9 @@ def handle_client(client):  # Takes client socket as argument.
     """Handles a single client connection."""
 
     name = client.recv(BUFSIZ).decode("utf8")
-    welcome = 'Welcome %s! If you ever want to quit, type {quit} to exit.' % name
+    welcome = 'Willkommen %s! Wenn du den Chat verlassen willst gebe bitte {quit} ein.' % name
     client.send(bytes(welcome, "utf8"))
-    msg = "%s has joined the chat!" % name
+    msg = "%s ist dem Chat beigetreten!" % name
     broadcast(bytes(msg, "utf8"))
     clients[client] = name
 
@@ -29,8 +29,8 @@ def handle_client(client):  # Takes client socket as argument.
         else:
             #client.send(bytes("{quit}", "utf8"))
             del clients[client]
-            print("%s has left the chat." % name)
-            broadcast(bytes("%s has left the chat." % name, "utf8"))
+            print("%s hat den Chat verlassen." % name)
+            broadcast(bytes("%s hat den Chat verlassen." % name, "utf8"))
             client.close()
             quit()
 
@@ -55,7 +55,7 @@ SERVER.bind(ADDR)
 
 if __name__ == "__main__":
     SERVER.listen(5)
-    print("Waiting for connection...")
+    print("Warte auf Clients..")
     ACCEPT_THREAD = Thread(target=accept_incoming_connections)
     ACCEPT_THREAD.start()
     ACCEPT_THREAD.join()
