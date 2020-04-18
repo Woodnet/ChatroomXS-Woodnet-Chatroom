@@ -31,11 +31,11 @@ def on_closing(event=None):
     send()
 
 top = tkinter.Tk()
-top.title("ChatroomXS")
+top.title("ChatroomXS -Woodnet Chatroom")
 
 messages_frame = tkinter.Frame(top)
 my_msg = tkinter.StringVar()  # For the messages to be sent.
-my_msg.set("Type your messages here.")
+my_msg.set("Schreibe hier deine Nachricht..")
 scrollbar = tkinter.Scrollbar(messages_frame)  # To navigate through past messages.
 # Following will contain the messages.
 msg_list = tkinter.Listbox(messages_frame, height=28, width=80,font="Arial 17",fg="black", yscrollcommand=scrollbar.set)
