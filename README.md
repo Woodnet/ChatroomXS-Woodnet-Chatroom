@@ -1,5 +1,11 @@
 # ChatroomXS
-Dies ist der Woodnet-Chatroom (XS). Der jeweilige Server ist dennoch noch nicht online, desshalb kann der Client auch bis jetzt nur lokal benutzt werden.
+Dies ist der Woodnet-Chatroom (XS). Der jeweilige Server ist dennoch noch nicht online, desshalb kann der Client auch bis jetzt nur lokal benutzt werden. 
+
+    ==> Multithreading
+
+# Benötigte Module:
+    
+    --> threading,socket,os,time,tkinter
 
 # Eine Woodnet-Chatroom-Software?
 
